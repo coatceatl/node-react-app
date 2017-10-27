@@ -977,44 +977,81 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Hello = function (_React$Component) {
-  _inherits(Hello, _React$Component);
+var Signin = function (_React$Component) {
+  _inherits(Signin, _React$Component);
 
-  function Hello() {
-    _classCallCheck(this, Hello);
+  function Signin(props) {
+    _classCallCheck(this, Signin);
 
-    return _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Signin.__proto__ || Object.getPrototypeOf(Signin)).call(this, props));
+
+    _this.signIn = _this.signIn.bind(_this);
+    _this.handleEmailChange = _this.handleEmailChange.bind(_this);
+    _this.handlePasswordChange = _this.handlePasswordChange.bind(_this);
+    _this.state = {
+      email: '',
+      password: ''
+    };
+    return _this;
   }
 
-  _createClass(Hello, [{
+  _createClass(Signin, [{
+    key: 'signIn',
+    value: function signIn() {
+      use.post('/signin', {
+        email: this.state.email,
+        password: this.state.password
+      }).then(function (response) {
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: 'handleEmailChange',
+    value: function handleEmailChange(e) {
+      this.setState({ email: e.target.value });
+    }
+  }, {
+    key: 'handlePasswordChange',
+    value: function handlePasswordChange(e) {
+      this.setState({ password: e.target.value });
+    }
+  }, {
+    key: 'signIn',
+    value: function signIn() {
+      alert('Email adress is ' + this.state.email + ' Password is ' + this.state.password);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'ul',
+        'div',
         null,
         _react2.default.createElement(
-          'li',
-          null,
-          'Hello'
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          'from'
-        ),
-        _react2.default.createElement(
-          'li',
-          null,
-          'React'
+          'form',
+          { className: 'form-signin' },
+          _react2.default.createElement(
+            'h2',
+            { className: 'form-signin-heading' },
+            'Please sign in'
+          ),
+          _react2.default.createElement('input', { type: 'email', onChange: this.handleEmailChange, placeholder: 'Email adress', required: true }),
+          _react2.default.createElement('input', { type: 'password', onChange: this.handlePasswordChange, placeholder: 'Password', required: true }),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn btn-lg', onClick: this.signIn, type: 'button' },
+            'Sign in'
+          )
         )
       );
     }
   }]);
 
-  return Hello;
+  return Signin;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Hello, null), document.getElementById('app'));
+_reactDom2.default.render(_react2.default.createElement(Signin, null), document.getElementById('app'));
 
 /***/ }),
 /* 16 */

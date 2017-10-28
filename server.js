@@ -20,7 +20,6 @@ app.post('/signin', (req, res) => {
   }
 });
 
-/*
 app.post('/signup', (req, res) => {
   const user_name=req.body.email;
   const password=req.body.password;
@@ -31,8 +30,6 @@ app.post('/signup', (req, res) => {
     res.send('failure');
   }
 });
-*/
-
 
 app.listen(3000, ()=> {
   console.log('Server started');

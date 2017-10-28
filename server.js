@@ -8,7 +8,8 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname));
 
-app.post('/login', (req, res) => {
+
+app.post('/signin', (req, res) => {
   const user_name=req.body.email;
   const password=req.body.password;
   if(user_name=='admin' && password=='admin') {
@@ -19,6 +20,7 @@ app.post('/login', (req, res) => {
   }
 });
 
+/*
 app.post('/signup', (req, res) => {
   const user_name=req.body.email;
   const password=req.body.password;
@@ -29,6 +31,7 @@ app.post('/signup', (req, res) => {
     res.send('failure');
   }
 });
+*/
 
 
 app.listen(3000, ()=> {

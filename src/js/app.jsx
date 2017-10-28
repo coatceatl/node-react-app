@@ -1,39 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import BodyParser from 'body-parser';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import axios from 'axios';
 
 class Signin extends React.Component {
   constructor(props) {
     super(props);
 
-    this.signIn = this.signIn.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
       email: '',
       password: ''
     };
   }
 
-  signIn() {
-    use.post('/signin', {
+  signIn = () => {
+    axios.post('/signin', {
       email: this.state.email,
       password: this.state.password
     })
-    .then(function (response) {
+    .then((response) => {
       console.log(response);
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
     });
   }
-  handleEmailChange(e) {
+  handleEmailChange = (e) => {
     this.setState({ email:e.target.value })
   }
-  handlePasswordChange(e) {
+  handlePasswordChange = (e) => {
     this.setState({ password:e.target.value })
-  }
-  signIn() {
-    alert('Email adress is ' + this.state.email + ' Password is ' + this.state.password);
   }
 
   render() {
@@ -41,8 +42,14 @@ class Signin extends React.Component {
       <div>
         <form className='form-signin'>
           <h2 className='form-signin-heading'>Please sign in</h2>
-          <input type='email' onChange={this.handleEmailChange} placeholder='Email adress' required />
-          <input type='password' onChange={this.handlePasswordChange} placeholder='Password' required />
+          <input type='email' onChange={this.handleEmailChange} placeholder='Email adress'
+            value={this.state.email} required />
+          <input type='password'
+            onChange={this.handlePasswordChange}
+            placeholder='Password'
+            value={this.state.password}
+            required
+          />
           <button className='btn btn-lg' onClick={this.signIn} type='button'>Sign in</button>
         </form>
       </div>

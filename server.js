@@ -1,6 +1,14 @@
 const express    = require('express');
-const path       = require('path');
+const Path       = require('path');
 const bodyParser = require('body-parser');
+const mongoose   = require('mongoose');
+const user       = require('./models/user');
+
+mongoose.connect(
+  'mongodb://localhost/node_react_app',
+  { useMongoClient: true }
+);
+mongoose.Promise = global.Promise;
 
 const app = express();
 
@@ -21,10 +29,10 @@ app.post('/signin', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-  const user_name=req.body.email;
+  const email=req.body.email;
   const password=req.body.password;
-  if(user_name && password) {
-    user.signup(user_name, password);
+  if(email && password) {
+    user.signup(email, password);
   }
   else {
     res.send('failure');

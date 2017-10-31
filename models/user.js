@@ -1,11 +1,13 @@
-/* 
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-mongoose.Promise = global.Promise;
-//var passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var UserSchema = new mongoose.Schema({
-    username: {
+mongoose.connect('mongodb://localhost/node_react_app', {
+  useMongoClient: true,
+});
+mongoose.Promise = global.Promise;
+
+const UserSchema = new mongoose.Schema({
+    user_name: {
       type: String,
       unique: true,
       required: true
@@ -19,5 +21,6 @@ var UserSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('User', UserSchema);
 
-*/
+
+
 

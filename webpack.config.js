@@ -2,7 +2,6 @@ const path = require('path');
 
 const paths = {
   DIST: path.resolve(__dirname, 'dist'),
-//  PUBLIC: path.resolve(__dirname, 'public'),
   JS: path.resolve(__dirname,'src/js'),
 };
 

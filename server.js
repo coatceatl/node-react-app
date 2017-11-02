@@ -3,12 +3,14 @@ const Path       = require('path');
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const user       = require('./models/user');
-
+/*
 mongoose.connect(
   'mongodb://localhost/node_react_app',
   { useMongoClient: true }
 );
 mongoose.Promise = global.Promise;
+*/
+
 
 const app = express();
 

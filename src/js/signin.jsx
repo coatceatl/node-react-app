@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BodyParser from 'body-parser';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link
-} from 'react-router-dom';
+
 import axios from 'axios';
 
 export class Signin extends React.Component {
